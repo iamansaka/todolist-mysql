@@ -141,6 +141,10 @@ li .done{
     background-color: #2ecc71;
 }
 
+.btn.btn-secondary {
+    background-color: #bdc3c7;
+}
+
 .btn-success:hover,
 .btn-danger:hover {
     opacity: .7;
