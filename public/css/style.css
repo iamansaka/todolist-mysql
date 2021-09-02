@@ -1,0 +1,136 @@
+:root {
+    --primary: #00c7fa;
+    --pink: #ffdaee;
+    --white: #fff;
+    --black: #000;
+    --background: #e8eaee;
+    --font-family: 'Open Sans', sans-serif;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+}
+
+html,
+body {
+    background: var(--background);
+    font-family: var(--font-family);
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.content {
+    background-color: var(--white);
+    min-width: 400px;
+    min-height: 500px;
+    padding: 20px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    display: block;
+    text-transform: none;
+    color: var(--primary);
+}
+
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form input,
+form button {
+    height: 30px;
+    border: 1px solid var(--black);
+    box-shadow: 5px 8px 0px 0px var(--pink), 5px 8px 3px var(--black);
+    transition: all .4 ease-in-out;
+}
+
+form input:focus,
+form input:hover,
+form button:hover {
+    box-shadow: 2px 4px 0px 0px var(--pink), 2px 4px 3px var(--black);
+}
+
+form input {
+    position: relative;
+    width: calc(100% - 15%);
+    padding: 5px 10px;
+    outline: none;
+}
+
+form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+}
+
+
+.text-danger {
+    margin: 20px 0;
+    font-style: italic;
+    color: red;
+}
+
+.todo-list li {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--pink);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--white);
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+.btn.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn.btn-success {
+    background-color: #2ecc71;
+}
+
+.btn-success:hover,
+.btn-danger:hover {
+    opacity: .7;
+}
