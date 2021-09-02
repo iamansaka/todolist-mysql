@@ -1,5 +1,17 @@
 <?php
-$error = "";
+
+session_start();
+require_once "./actions/database.php";
+
+$todos = [];
+$statementAll = $pdo->prepare("SELECT * FROM todo_list");
+$statementAll->execute();
+$todos = $statementAll->fetchAll();
+
+echo "<pre>";
+print_r($todos);
+echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +26,7 @@ $error = "";
     <div class="container">
         <div class="content">
             <h1>Todo<span>list</span></h1>
-            <form action="/" method="POST">
+            <form action="actions/add-todo.php" method="POST">
                 <label for="todo" hidden="true"></label>
                 <input type="text" name="todo" id="todo" />
                 <button type="submit">
@@ -23,29 +35,19 @@ $error = "";
                     </svg>
                 </button>
             </form>
-            <p class="text-danger">Coucou error</p>
+            <?php if (isset($_SESSION['error'])) : ?>
+                <p class="text-danger"><?= $error ?></p>
+            <?php unset($_SESSION['error']); endif; ?>
             <ul class="todo-list">
+                <?php foreach ($todos as $todo) : ?>
                 <li>
-                    <span>Faire du PHP </span>
+                    <span class="<?= $todo['done'] ? "done" : "" ?>"><?= $todo['name'] ?></span>
                     <div class="actions">
-                        <a href="#" class="btn btn-success">Valider</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="/actions/edit-todo.php?id=<?= $todo['id'] ?>?done=<?= $todo['done'] ?>" class="btn btn-success"><?= $todo['done'] ? "Annuler" : "Valider" ?></a>
+                        <a href="/actions/delete-todo.php?id=<?= $todo['id'] ?>" class="btn btn-danger">Supprimer</a>
                     </div>
                 </li>
-                <li>
-                    <span>Nourrir le chat</span>
-                    <div class="actions">
-                        <a href="#" class="btn btn-success">Valider</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
-                    </div>
-                </li>
-                <li>
-                    <span>Faire du JS</span>
-                    <div class="actions">
-                        <a href="#" class="btn btn-success">Valider</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
-                    </div>
-                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>

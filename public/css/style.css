@@ -102,15 +102,26 @@ form button {
     color: red;
 }
 
+.todo-list {
+    margin-top: 25px;
+}
+
 .todo-list li {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--pink);
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.todo-list li:nth-child(2n - 1) {
+    background-color: var(--pink);
+}
+
+li .done{
+    text-decoration: line-through;
 }
 
 .btn {
