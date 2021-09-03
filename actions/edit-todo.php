@@ -3,14 +3,18 @@
 require_once "./database.php";
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    if (!empty($_GET['idTodo']) && !empty($_GET['done'])) {
+    if (!empty($_GET['idTodo'])) {
 
-        $idTodo = (int)htmlentities($_GET['idTodo']);
-        $doneTodo = (int)htmlentities($_GET['done']);
-        $doneTodo = !$doneTodo;
+        $_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_NUMBER_INT);
 
-        $statementEdit = $pdo->prepare("UPDATE todo_list SET done = :done WHERE id = :id");
-        $statementEdit->bindValue(":done", $doneTodo, PDO::PARAM_INT);
+        $idTodo = $_GET['idTodo'] ?? "";
+        $doneTodo = $_GET['done'] ?? "";
+
+        if ($doneTodo) {
+            $statementEdit = $pdo->prepare("UPDATE todo_list SET done = 0 WHERE id = :id");
+        } else {
+            $statementEdit = $pdo->prepare("UPDATE todo_list SET done = 1 WHERE id = :id");
+        }
         $statementEdit->bindValue(":id", $idTodo, PDO::PARAM_INT);
         $statementEdit->execute();
     }

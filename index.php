@@ -4,7 +4,7 @@ session_start();
 require_once "./actions/database.php";
 
 $todos = [];
-$statementAll = $pdo->prepare("SELECT * FROM todo_list");
+$statementAll = $pdo->prepare("SELECT * FROM todo_list ORDER BY id DESC");
 $statementAll->execute();
 $todos = $statementAll->fetchAll();
 
@@ -36,7 +36,7 @@ echo "</pre>";
                 </button>
             </form>
             <?php if (isset($_SESSION['error'])) : ?>
-                <p class="text-danger"><?= $error ?></p>
+                <p class="text-danger"><?= $_SESSION['error'] ?></p>
             <?php unset($_SESSION['error']); endif; ?>
             <ul class="todo-list">
                 <?php foreach ($todos as $todo) : ?>
