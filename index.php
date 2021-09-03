@@ -43,7 +43,7 @@ echo "</pre>";
                 <li>
                     <span class="<?= $todo['done'] ? "done" : "" ?>"><?= $todo['name'] ?></span>
                     <div class="actions">
-                        <a href="/actions/edit-todo.php?id=<?= $todo['id'] ?>?done=<?= $todo['done'] ?>" class="btn btn-<?= $todo['done'] ? "secondary" : "success" ?>"><?= $todo['done'] ? "Annuler" : "Valider" ?></a>
+                        <a href="/actions/edit-todo.php?idTodo=<?= $todo['id'] ?>&amp;done=<?= $todo['done'] ?>" class="btn btn-<?= $todo['done'] ? "secondary" : "success" ?>"><?= $todo['done'] ? "Annuler" : "Valider" ?></a>
                         <a href="/actions/delete-todo.php?id=<?= $todo['id'] ?>" class="btn btn-danger">Supprimer</a>
                     </div>
                 </li>

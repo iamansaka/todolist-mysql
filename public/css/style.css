@@ -129,7 +129,6 @@ li .done{
     border-radius: 5px;
     text-align: center;
     color: var(--white);
-    opacity: 1;
     transition: all .3s ease-in-out;
 }
 
@@ -145,7 +144,19 @@ li .done{
     background-color: #bdc3c7;
 }
 
-.btn-success:hover,
 .btn-danger:hover {
-    opacity: .7;
+    background-color: #c73727;
+}
+
+.btn-success:hover {
+    background-color: #19a152;
+}
+
+.btn-secondary:hover {
+    background-color: #808283;
+}
+
+
+.actions .btn {
+    font-size: 12px;
 }
