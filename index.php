@@ -8,10 +8,6 @@ $statementAll = $pdo->prepare("SELECT * FROM todo_list ORDER BY id DESC");
 $statementAll->execute();
 $todos = $statementAll->fetchAll();
 
-echo "<pre>";
-print_r($todos);
-echo "</pre>";
-
 ?>
 
 <!DOCTYPE html>
