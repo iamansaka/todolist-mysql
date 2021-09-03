@@ -2,7 +2,7 @@
 
 ![image](app.png)
 
-## Language
+## Languages
 
 Html, css, php, mysql
 
